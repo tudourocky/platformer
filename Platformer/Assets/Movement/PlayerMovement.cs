@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public Animator animator;
-
+    //Attack
+    private float delay = 0.01f;
+    private bool attacking;
     //WASD
     private float horizontal;
     private float speed = 8f;
@@ -34,6 +36,9 @@ public class PlayerMovement : MonoBehaviour {
             animator.SetBool("isIdle",false);
         } else {
             animator.SetBool("isIdle",true);
+        }
+        if(Input.GetButtonDown("Attack1")) {
+            Attack();
         }
         if(Input.GetButtonDown("Jump") && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
@@ -76,5 +81,18 @@ public class PlayerMovement : MonoBehaviour {
         isDashing = false;
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
+    }
+    private void Attack() {
+        if(attacking) {
+            return;
+        }
+        animator.SetBool("attack", true);
+        attacking = true;
+        StartCoroutine(DelayAttack());
+    }
+    private IEnumerator DelayAttack() {
+        yield return new WaitForSeconds(delay);
+        attacking = false;
+        animator.SetBool("attack",false);
     }
 }
