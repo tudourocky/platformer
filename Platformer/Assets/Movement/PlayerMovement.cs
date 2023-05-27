@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+    public Animator animator;
+
     //WASD
     private float horizontal;
     private float speed = 8f;
@@ -27,6 +29,12 @@ public class PlayerMovement : MonoBehaviour {
             return;
         }
         horizontal = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat("horizontal", horizontal);
+        if(horizontal != 0) {
+            animator.SetBool("isIdle",false);
+        } else {
+            animator.SetBool("isIdle",true);
+        }
         if(Input.GetButtonDown("Jump") && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
         }
