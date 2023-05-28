@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
+    public KeyCode left;
+    public KeyCode right;
+    public KeyCode up;
+    public KeyCode down;
+    public KeyCode attack;
+    public KeyCode dash;
+
     public Animator animator;
     //Attack
     private float delay = 0.01f;
     private bool attacking;
     //WASD
     private float horizontal;
-    private float speed = 8f;
-    private float jumpPower = 16f;
+    private float speed = 16f;
+    private float jumpPower = 22f;
     private bool isFacingRight = true;
 
     //Dash
     private bool canDash = true;
     private bool isDashing;
-    private float dashPower = 24f;
+    private float dashPower = 28f;
     private float dashTime = 0.2f;
     private float dashCoolDown = 0.5f;
     [SerializeField] private Rigidbody2D rb;
@@ -30,6 +37,7 @@ public class PlayerMovement : MonoBehaviour {
         if(isDashing) {
             return;
         }
+        
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("horizontal", horizontal);
         if(horizontal != 0) {
@@ -40,14 +48,14 @@ public class PlayerMovement : MonoBehaviour {
         if(Input.GetButtonDown("Attack1")) {
             Attack();
         }
-        if(Input.GetButtonDown("Jump") && IsGrounded()) {
+        if(Input.GetKeyDown(up) && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
         }
-        if(Input.GetButtonUp("Jump") && rb.velocity.y > 0f) {
+        if(Input.GetKeyUp(up) && rb.velocity.y > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
         Flip();
-        if(Input.GetKeyDown(KeyCode.LeftShift) && canDash) {
+        if(Input.GetKeyDown(dash) && canDash) {
             StartCoroutine(Dash());
         }
     }
