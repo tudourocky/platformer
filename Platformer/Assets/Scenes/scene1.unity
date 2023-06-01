@@ -484,7 +484,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600946833}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -590,6 +590,8 @@ MonoBehaviour:
   attack: 113
   dash: 304
   animator: {fileID: 600946840}
+  speed: 16
+  speed2: 0
   rb: {fileID: 600946834}
   groundCheck: {fileID: 957779986}
   groundLayer:
@@ -1402,10 +1404,10 @@ GameObject:
   - component: {fileID: 2014917414}
   - component: {fileID: 2014917413}
   - component: {fileID: 2014917412}
-  - component: {fileID: 2014917411}
   - component: {fileID: 2014917410}
   - component: {fileID: 2014917409}
   - component: {fileID: 2014917408}
+  - component: {fileID: 2014917416}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -1467,7 +1469,7 @@ Animator:
   m_GameObject: {fileID: 2014917407}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 82cf4e09a8a324e89b86bf1320115cc1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0e251f73789da46fca1ceb0374e96615, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1586,31 +1588,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 0
---- !u!114 &2014917411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014917407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6a429263c4734851848e6a2538a84e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  left: 106
-  right: 108
-  up: 105
-  down: 107
-  attack: 117
-  dash: 303
-  animator: {fileID: 2014917409}
-  rb: {fileID: 2014917412}
-  groundCheck: {fileID: 1971842335}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  tr: {fileID: 2014917410}
 --- !u!50 &2014917412
 Rigidbody2D:
   serializedVersion: 4
@@ -1639,7 +1616,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014917407}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1726,3 +1703,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2014917416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014917407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94669d6b32a0c41fe9e68372a63dc242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  left: 106
+  right: 108
+  up: 105
+  down: 107
+  attack: 117
+  dash: 303
+  animator: {fileID: 2014917409}
+  speed: 16
+  speed2: 0
+  rb: {fileID: 2014917412}
+  groundCheck: {fileID: 1971842335}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  tr: {fileID: 2014917410}

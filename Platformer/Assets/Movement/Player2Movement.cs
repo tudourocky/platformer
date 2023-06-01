@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class Player2Movement : MonoBehaviour {
 
     public KeyCode left;
     public KeyCode right;
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour {
         if(isDashing) {
             return;
         }
-        horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = Input.GetAxisRaw("Horizontal2");
         animator.SetFloat("horizontal", horizontal);
         
         if(horizontal != 0) {
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour {
             animator.SetBool("isIdle",true);
         }
         
-        if(Input.GetButtonDown("AttackP1")) {
+        if(Input.GetButtonDown("AttackP2")) {
             Attack();
         }
         if(Input.GetKeyDown(up) && IsGrounded()) {
@@ -98,13 +98,13 @@ public class PlayerMovement : MonoBehaviour {
         if(attacking) {
             return;
         }
-        animator.SetBool("attack", true);
+        animator.SetBool("attack2", true);
         attacking = true;
         StartCoroutine(DelayAttack());
     }
     private IEnumerator DelayAttack() {
         yield return new WaitForSeconds(delay);
         attacking = false;
-        animator.SetBool("attack",false);
+        animator.SetBool("attack2",false);
     }
 }
