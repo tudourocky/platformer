@@ -490,18 +490,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.460958}
+  m_Offset: {x: 0.0060777664, y: -1.8017503}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 2.5}
-    newSize: {x: 0.32, y: 0.25}
+    oldSize: {x: 6.4, y: 6.4}
+    newSize: {x: 6.4, y: 6.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.9, y: 1.4480839}
+  m_Size: {x: 2.134142, y: 2.7994335}
   m_EdgeRadius: 0
 --- !u!212 &600946836
 SpriteRenderer:
@@ -544,12 +544,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1774107886, guid: e0214f80a404140bfbc6bbcfb9de4259, type: 3}
-  m_Color: {r: 0.34109113, g: 0.990566, b: 0.9304116, a: 1}
-  m_FlipX: 1
+  m_Sprite: {fileID: 1427846863, guid: e4681a9bfc811448cbd0af0b2ded38a9, type: 3}
+  m_Color: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.25}
+  m_Size: {x: 6.4, y: 6.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -563,7 +563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600946833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.16, y: 0.81, z: 0}
+  m_LocalPosition: {x: -30.16, y: 4.32, z: 0}
   m_LocalScale: {x: 1.4836, y: 1.7083093, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -716,7 +716,7 @@ Animator:
   m_GameObject: {fileID: 600946833}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 82cf4e09a8a324e89b86bf1320115cc1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2a1bba54976944ef19cd3b36f6ced35f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -734,7 +734,7 @@ EdgeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600946833}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1025,7 +1025,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957779985}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.51, y: -1.18, z: 0}
+  m_LocalPosition: {x: -0.51, y: -3.18, z: 0}
   m_LocalScale: {x: 1.8375, y: 1.4820995, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
