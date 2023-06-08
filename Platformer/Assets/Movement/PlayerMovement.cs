@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour {
         }
         
         if(Input.GetButtonDown("AttackP1")) {
-            Attack();
+            //Attack();
         }
         if(Input.GetKeyDown(up) && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
@@ -95,6 +95,7 @@ public class PlayerMovement : MonoBehaviour {
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
     }
+    /*
     private void Attack() {
         if(attacking) {
             return;
@@ -108,4 +109,5 @@ public class PlayerMovement : MonoBehaviour {
         attacking = false;
         animator.SetBool("attack",false);
     }
+    */
 }
