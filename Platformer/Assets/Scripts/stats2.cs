@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stats : MonoBehaviour
+public class stats2 : MonoBehaviour
 {
     public Animator animator;
     public int maxHealth = 100;
@@ -21,6 +21,7 @@ public class stats : MonoBehaviour
 
     public void takeDamage(int damage)
     {
+        Debug.Log("P2 takes damage");
         animator.SetTrigger("hurt");
         currentHealth -= damage;
         if(currentHealth <= 0)

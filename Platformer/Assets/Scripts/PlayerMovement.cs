@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player2Movement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour {
 
     public KeyCode left;
     public KeyCode right;
@@ -13,7 +13,7 @@ public class Player2Movement : MonoBehaviour {
 
     public Animator animator;
     //Attack
-    private float delay = 0.01f;
+    //private float delay = 0.01f;
     private bool attacking;
     //WASD
     private float horizontal;
@@ -40,7 +40,7 @@ public class Player2Movement : MonoBehaviour {
         if(isDashing) {
             return;
         }
-        horizontal = Input.GetAxisRaw("Horizontal2");
+        horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("horizontal", horizontal);
         
         if(horizontal != 0) {
@@ -49,12 +49,13 @@ public class Player2Movement : MonoBehaviour {
             animator.SetBool("isIdle",true);
         }
         
-        if(Input.GetButtonDown("AttackP2")) {
-            Attack();
+        if(Input.GetButtonDown("AttackP1")) {
+            //Attack();
         }
         if(Input.GetKeyDown(up) && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
         }
+        
         if(Input.GetKeyUp(up) && rb.velocity.y > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
@@ -94,17 +95,19 @@ public class Player2Movement : MonoBehaviour {
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
     }
+    /*
     private void Attack() {
         if(attacking) {
             return;
         }
-        animator.SetBool("attack2", true);
+        animator.SetBool("attack", true);
         attacking = true;
         StartCoroutine(DelayAttack());
     }
     private IEnumerator DelayAttack() {
         yield return new WaitForSeconds(delay);
         attacking = false;
-        animator.SetBool("attack2",false);
+        animator.SetBool("attack",false);
     }
+    */
 }
