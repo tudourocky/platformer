@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class PlayerCombat : MonoBehaviour
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
+        if(animator.GetBool("isDead"))
+        {
+            dead();
+        }
         
     }
 
@@ -46,5 +51,11 @@ public class PlayerCombat : MonoBehaviour
     {
         if (attackPoint == null) return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+    private async void dead()
+    {
+        await Task.Delay((int)(2000));
+        GetComponent<SpriteRenderer>().enabled = false;
+        this.enabled = false;
     }
 }

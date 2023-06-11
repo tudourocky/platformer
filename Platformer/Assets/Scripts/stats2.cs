@@ -33,9 +33,8 @@ public class stats2 : MonoBehaviour
     {
         Debug.Log("P2 died");
         animator.SetBool("isDead", true);
-        GetComponent<Collider2D>().enabled = false;
+        //GetComponent<Collider2D>().enabled = false;
         GetComponent<Player2Movement>().enabled = false;
-        
         this.enabled = false;
     }
     

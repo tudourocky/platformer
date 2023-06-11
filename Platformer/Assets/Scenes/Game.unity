@@ -1115,9 +1115,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 600946840}
   maxHealth: 100
-  knockbackForce: 2
-  rb: {fileID: 600946834}
-  collider2d: {fileID: 0}
 --- !u!1 &834461371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,7 +2168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 117
-  attackDamage: 20
+  attackDamage: 10
   attackRate: 2
   animator: {fileID: 2014917409}
   attackPoint: {fileID: 894121646}
