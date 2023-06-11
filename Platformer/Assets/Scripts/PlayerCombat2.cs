@@ -39,6 +39,7 @@ public class PlayerCombat2 : MonoBehaviour
         for(int i = 0; i < hitEnemies.Length; i++)
         {
             hitEnemies[i].GetComponent<stats>().takeDamage(attackDamage);
+
         }
     }
     void OnDrawGizmosSelected()
