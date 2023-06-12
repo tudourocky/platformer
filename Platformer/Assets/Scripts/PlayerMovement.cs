@@ -52,6 +52,10 @@ public class PlayerMovement : MonoBehaviour {
         if(Input.GetButtonDown("AttackP1")) {
             //Attack();
         }
+        if (Input.GetKeyDown(down))
+        {
+            animator.SetTrigger("crouch");
+        }
         if(Input.GetKeyDown(up) && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
         }
