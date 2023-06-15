@@ -10,7 +10,6 @@ public class Player2Movement : MonoBehaviour {
     public KeyCode down;
     //public KeyCode attack;
     public KeyCode dash;
-
     public Animator animator;
     //Attack
     //private float delay = 0.01f;
