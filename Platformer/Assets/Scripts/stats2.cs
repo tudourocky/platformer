@@ -7,10 +7,12 @@ public class stats2 : MonoBehaviour
     public Animator animator;
     public int maxHealth = 100;
     int currentHealth;
+    public HealthBar2 healthBar;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class stats2 : MonoBehaviour
         Debug.Log("P2 takes damage");
         animator.SetTrigger("hurt");
         currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
         if(currentHealth <= 0)
         {
             die();
