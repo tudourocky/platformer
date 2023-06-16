@@ -5,13 +5,24 @@ using System.Threading.Tasks;
 
 public class PlayerCombat2 : MonoBehaviour
 {
+    // Downward slash
     public KeyCode attack;
     public int attackDamage = 20;
     public float attackRate = 2f;
     float nextAttackTime = 0f;
-    public Animator animator;
     public Transform attackPoint;
-    public float attackRange = 0.3f;
+    public float attackRange = 0.5f;
+
+    //Stab
+    public KeyCode stab;
+    public int stabDamage = 10;
+    public float stabRate = 2f;
+    float nextStabTime = 0f;
+    public Transform stabPoint;
+    public float stabHeight = 0.5f;
+    public float stabWidth = 5f;
+
+    public Animator animator;
     public LayerMask enemyLayers;
 
 
@@ -31,6 +42,11 @@ public class PlayerCombat2 : MonoBehaviour
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
             }
+            if (Input.GetKeyDown(stab))
+            {
+                Stab();
+                nextAttackTime = Time.time + 1f / stabRate;
+            }
         }
         if(animator.GetBool("isDead"))
         {
@@ -49,10 +65,20 @@ public class PlayerCombat2 : MonoBehaviour
 
         }
     }
+    void Stab()
+    {
+        animator.SetTrigger("stab");
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(stabPoint.position, new Vector2(stabWidth, stabHeight), 0, enemyLayers);
+        for (int i = 0; i < hitEnemies.Length; i++)
+        {
+            hitEnemies[i].GetComponent<stats>().takeDamage(stabDamage);
+        }
+    }
     void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.DrawWireCube(stabPoint.position, new Vector3(stabWidth, stabHeight));
     }
 
     private async void dead()
