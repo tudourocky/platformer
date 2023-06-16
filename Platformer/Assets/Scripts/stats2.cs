@@ -38,6 +38,7 @@ public class stats2 : MonoBehaviour
         animator.SetBool("isDead", true);
         //GetComponent<Collider2D>().enabled = false;
         GetComponent<Player2Movement>().enabled = false;
+        FindObjectOfType<AudioManager>().Play("PlayerDeath");
         this.enabled = false;
     }
     

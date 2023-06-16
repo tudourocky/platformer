@@ -42,6 +42,8 @@ public class stats : MonoBehaviour
         //GetComponent<Collider2D>().enabled = false;
         GetComponent<PlayerMovement>().enabled = false;
 
+        FindObjectOfType<AudioManager>().Play("PlayerDeath");
+
         this.enabled = false;
     }
 
