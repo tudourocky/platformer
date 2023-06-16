@@ -52,7 +52,11 @@ public class Player2Movement : MonoBehaviour {
             Attack();
         }
         */
-        if(Input.GetKeyDown(up) && IsGrounded()) {
+        if (Input.GetKeyDown(down))
+        {
+            animator.SetTrigger("crouch");
+        }
+        if (Input.GetKeyDown(up) && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
         }
         if(Input.GetKeyUp(up) && rb.velocity.y > 0f) {

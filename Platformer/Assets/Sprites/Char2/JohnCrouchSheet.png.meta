@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ffc6d87d03fe048f9829c15d755e1771
+guid: 82890fec1a55a4cebbee1d5f913d97be
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: JamesCrouchingSheet_0
+      name: JohnCrouchSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 661a6e61deaf94889aeee02e70705c15
-      internalID: -1998108815
+      spriteID: 11abf22b20b044d8dbd8b1eab06157b4
+      internalID: -204411363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: JamesCrouchingSheet_1
+      name: JohnCrouchSheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70c77750e661b4b10b345e80494180f6
-      internalID: 104789017
+      spriteID: bd95a82a0efff46ecb7b7a8c9f9757eb
+      internalID: -95708294
       vertices: []
       indices: 
       edges: []
@@ -169,8 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      JamesCrouchingSheet_0: -1998108815
-      JamesCrouchingSheet_1: 104789017
+      JohnCrouchSheet_0: -204411363
+      JohnCrouchSheet_1: -95708294
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
