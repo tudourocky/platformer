@@ -25,7 +25,7 @@ public class Player2Movement : MonoBehaviour {
     public float speed;
     public float baseSpeed;
     public float speed2;
-    private float jumpPower = 22f;
+    private float jumpPower = 28f;
     private bool isFacingRight = true;
 
     //Dash
