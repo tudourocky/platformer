@@ -164,4 +164,8 @@ public class PlayerMovement : MonoBehaviour {
         animator.SetBool("attack",false);
     }
     */
+    public bool getIsFacingRight()
+    {
+        return isFacingRight;
+    }
 }

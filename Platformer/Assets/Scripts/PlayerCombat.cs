@@ -28,11 +28,13 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask enemyLayers;
 
     [SerializeField] GameObject player;
-    Vector2 playerbaseScale;
+    Vector3 playerbaseScale;
+    
     // Start is called before the first frame update
     void Start()
     {
         playerbaseScale = player.transform.localScale;
+        
     }
 
     // Update is called once per frame
@@ -97,6 +99,12 @@ public class PlayerCombat : MonoBehaviour
         stabDamage += 10;
         await Task.Delay((int)(5000));
         player.transform.localScale = playerbaseScale;
+        if (!player.GetComponent<PlayerMovement>().getIsFacingRight())
+        {
+            Vector3 localScale = player.transform.localScale;
+            localScale.x *= -1f;
+            player.transform.localScale = localScale;
+        }
         attackDamage = baseAttackDamage;
         stabDamage = baseStabDamage;
     }

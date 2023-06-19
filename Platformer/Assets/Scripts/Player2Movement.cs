@@ -163,4 +163,8 @@ public class Player2Movement : MonoBehaviour {
         animator.SetBool("attack2",false);
     }
     */
+    public bool getIsFacingRight()
+    {
+        return isFacingRight;
+    }
 }

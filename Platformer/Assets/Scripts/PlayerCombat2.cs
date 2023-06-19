@@ -98,6 +98,12 @@ public class PlayerCombat2 : MonoBehaviour
         stabDamage += 10;
         await Task.Delay((int)(5000));
         player2.transform.localScale = player2baseScale;
+        if (!player2.GetComponent<Player2Movement>().getIsFacingRight())
+        {
+            Vector3 localScale = player2.transform.localScale;
+            localScale.x *= -1f;
+            player2.transform.localScale = localScale;
+        }
         attackDamage = baseAttackDamage;
         stabDamage = baseStabDamage;
     }
