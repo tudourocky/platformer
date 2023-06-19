@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,16 +17,9 @@ public class stats : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void takeDamage(int damage)
     {
-
         Debug.Log("P1 takes damage");
         animator.SetTrigger("hurt");
         currentHealth -= damage;
@@ -46,5 +40,6 @@ public class stats : MonoBehaviour
 
         this.enabled = false;
     }
+
 
 }

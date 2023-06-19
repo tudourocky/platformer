@@ -73,6 +73,7 @@ public class PlayerCombat2 : MonoBehaviour
         {
             hitEnemies[i].GetComponent<stats>().takeDamage(stabDamage);
         }
+
     }
     void OnDrawGizmosSelected()
     {
@@ -87,4 +88,5 @@ public class PlayerCombat2 : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = false;
         this.enabled = false;
     }
+
 }

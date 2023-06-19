@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player2Movement : MonoBehaviour {
 
@@ -11,6 +12,9 @@ public class Player2Movement : MonoBehaviour {
     //public KeyCode attack;
     public KeyCode dash;
     public Animator animator;
+    PlayerMovement playerMovement;
+    [SerializeField] GameObject player;
+    float playerposX;
     //Attack
     //private float delay = 0.01f;
     private bool attacking;
@@ -33,12 +37,28 @@ public class Player2Movement : MonoBehaviour {
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer tr;
 
-    
+    private float knockBackPower = 28f;
+    private float currHealth = 100;
+
+    private void Awake()
+    {
+        playerMovement = player.GetComponent<PlayerMovement>();
+    }
+
     // Update is called once per frame
     void Update() {
-        if(isDashing) {
+        if (isDashing)
+        {
             return;
         }
+        
+        if (GetComponent<stats2>().healthBar.getCurrHealth() != currHealth)
+        {
+            currHealth = GetComponent<stats2>().healthBar.getCurrHealth();
+            playerposX = playerMovement.transform.position.x;
+            StartCoroutine(Dash2());
+        }
+        
         horizontal = Input.GetAxisRaw("Horizontal2");
         animator.SetFloat("horizontal", horizontal);
         
@@ -47,11 +67,6 @@ public class Player2Movement : MonoBehaviour {
         } else {
             animator.SetBool("isIdle",true);
         }
-        /*
-        if(Input.GetButtonDown("AttackP2")) {
-            Attack();
-        }
-        */
         if (Input.GetKeyDown(down))
         {
             animator.SetTrigger("crouch");
@@ -93,6 +108,33 @@ public class Player2Movement : MonoBehaviour {
         tr.emitting = true;
         yield return new WaitForSeconds(dashTime);
         tr.emitting = false;
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashCoolDown);
+        canDash = true;
+    }
+    //Dash2 for knockback
+    public IEnumerator Dash2()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+
+        if (transform.position.x < playerposX && isFacingRight)
+        {
+            rb.velocity = new Vector2(transform.localScale.x * -knockBackPower, 0f);
+        }
+        else if (transform.position.x > playerposX && !isFacingRight)
+        {
+            rb.velocity = new Vector2(transform.localScale.x * -knockBackPower, 0f);
+        }
+        else
+        {
+            rb.velocity = new Vector2(transform.localScale.x * knockBackPower, 0f);
+        }
+
+        yield return new WaitForSeconds(dashTime);
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashCoolDown);

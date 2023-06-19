@@ -15,12 +15,6 @@ public class stats2 : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void takeDamage(int damage)
     {
         Debug.Log("P2 takes damage");

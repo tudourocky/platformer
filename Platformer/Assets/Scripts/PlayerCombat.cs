@@ -25,6 +25,7 @@ public class PlayerCombat : MonoBehaviour
     public Animator animator;
     public LayerMask enemyLayers;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +72,7 @@ public class PlayerCombat : MonoBehaviour
         for (int i = 0; i < hitEnemies.Length; i++)
         {
             hitEnemies[i].GetComponent<stats2>().takeDamage(stabDamage);
+            
         }
     }
     void OnDrawGizmosSelected()
@@ -85,4 +87,6 @@ public class PlayerCombat : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = false;
         this.enabled = false;
     }
+
+    
 }

@@ -12,11 +12,15 @@ public class PlayerMovement : MonoBehaviour {
     public KeyCode dash;
 
     public Animator animator;
+    Player2Movement player2Movement;
+    [SerializeField] GameObject player2;
+    float player2posX;
+
     //Attack
     //private float delay = 0.01f;
     private bool attacking;
     //WASD
-    private float horizontal;
+    public float horizontal;
     private float horizontal2;
     public float speed;
     public float speed2;
@@ -34,12 +38,28 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer tr;
 
-    
+    private float knockBackPower = 28f;
+    private float currHealth = 100;
+
+
+    private void Awake()
+    {
+        player2Movement = player2.GetComponent<Player2Movement>();
+    }
     // Update is called once per frame
     void Update() {
-        if(isDashing) {
+        if (isDashing)
+        {
             return;
         }
+        
+        if (GetComponent<stats>().healthBar.getCurrHealth() != currHealth)
+        {
+            currHealth = GetComponent<stats>().healthBar.getCurrHealth();
+            player2posX = player2Movement.transform.position.x;
+            StartCoroutine(Dash2());
+        }
+        
         horizontal = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("horizontal", horizontal);
         
@@ -49,9 +69,6 @@ public class PlayerMovement : MonoBehaviour {
             animator.SetBool("isIdle",true);
         }
         
-        if(Input.GetButtonDown("AttackP1")) {
-            //Attack();
-        }
         if (Input.GetKeyDown(down))
         {
             animator.SetTrigger("crouch");
@@ -63,6 +80,7 @@ public class PlayerMovement : MonoBehaviour {
         if(Input.GetKeyUp(up) && rb.velocity.y > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
+
         Flip();
         if(Input.GetKeyDown(dash) && canDash) {
             StartCoroutine(Dash());
@@ -77,7 +95,7 @@ public class PlayerMovement : MonoBehaviour {
     private bool IsGrounded() {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
-    private void Flip() {
+    public void Flip() {
         if(isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f) {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
@@ -85,7 +103,7 @@ public class PlayerMovement : MonoBehaviour {
             transform.localScale = localScale;
         }
     }
-    private IEnumerator Dash() {
+    public IEnumerator Dash() {
         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
@@ -94,6 +112,31 @@ public class PlayerMovement : MonoBehaviour {
         tr.emitting = true;
         yield return new WaitForSeconds(dashTime);
         tr.emitting = false;
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashCoolDown);
+        canDash = true;
+    }
+    //Dash2 for knockback
+    public IEnumerator Dash2()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+
+        if(transform.position.x < player2posX && isFacingRight)
+        {
+            rb.velocity = new Vector2(transform.localScale.x * -knockBackPower, 0f);
+        } else if(transform.position.x > player2posX && !isFacingRight)
+        {
+            rb.velocity = new Vector2(transform.localScale.x * -knockBackPower, 0f);
+        } else
+        {
+            rb.velocity = new Vector2(transform.localScale.x * knockBackPower, 0f);
+        }
+        
+        yield return new WaitForSeconds(dashTime);
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashCoolDown);
