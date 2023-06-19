@@ -8,6 +8,7 @@ public class PlayerCombat2 : MonoBehaviour
     // Downward slash
     public KeyCode attack;
     public int attackDamage = 20;
+    public int baseAttackDamage = 20;
     public float attackRate = 2f;
     float nextAttackTime = 0f;
     public Transform attackPoint;
@@ -16,6 +17,7 @@ public class PlayerCombat2 : MonoBehaviour
     //Stab
     public KeyCode stab;
     public int stabDamage = 10;
+    public int baseStabDamage = 10;
     public float stabRate = 2f;
     float nextStabTime = 0f;
     public Transform stabPoint;
@@ -25,11 +27,12 @@ public class PlayerCombat2 : MonoBehaviour
     public Animator animator;
     public LayerMask enemyLayers;
 
-
+    [SerializeField] GameObject player2;
+    Vector2 player2baseScale;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player2baseScale = player2.transform.localScale;
     }
 
     // Update is called once per frame
@@ -88,5 +91,14 @@ public class PlayerCombat2 : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = false;
         this.enabled = false;
     }
-
+    public async void attackBoost()
+    {
+        player2.transform.localScale *= 1.2f;
+        attackDamage += 10;
+        stabDamage += 10;
+        await Task.Delay((int)(5000));
+        player2.transform.localScale = player2baseScale;
+        attackDamage = baseAttackDamage;
+        stabDamage = baseStabDamage;
+    }
 }

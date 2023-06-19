@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using System.Threading.Tasks;
 
 public class Player2Movement : MonoBehaviour {
 
@@ -22,6 +23,7 @@ public class Player2Movement : MonoBehaviour {
     private float horizontal;
     private float horizontal2;
     public float speed;
+    public float baseSpeed;
     public float speed2;
     private float jumpPower = 22f;
     private bool isFacingRight = true;
@@ -139,6 +141,12 @@ public class Player2Movement : MonoBehaviour {
         isDashing = false;
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
+    }
+    public async void speedBoost()
+    {
+        speed *= 2;
+        await Task.Delay((int)(5000));
+        speed = baseSpeed;
     }
     /*
     private void Attack() {

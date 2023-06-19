@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour {
     public float horizontal;
     private float horizontal2;
     public float speed;
+    public float baseSpeed;
     public float speed2;
     private float jumpPower = 22f;
     private bool isFacingRight = true;
@@ -40,7 +42,6 @@ public class PlayerMovement : MonoBehaviour {
 
     private float knockBackPower = 28f;
     private float currHealth = 100;
-
 
     private void Awake()
     {
@@ -141,6 +142,12 @@ public class PlayerMovement : MonoBehaviour {
         isDashing = false;
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
+    }
+    public async void speedBoost()
+    {
+        speed *= 2;
+        await Task.Delay((int)(5000));
+        speed = baseSpeed;
     }
     /*
     private void Attack() {
