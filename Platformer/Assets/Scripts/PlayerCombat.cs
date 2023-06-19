@@ -64,6 +64,7 @@ public class PlayerCombat : MonoBehaviour
     void Attack()
     {
         animator.SetTrigger("attack");
+        FindObjectOfType<AudioManager>().Play("Swip");
         Collider2D[] hitEnemies =Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         for(int i = 0; i < hitEnemies.Length; i++)
         {
@@ -73,6 +74,7 @@ public class PlayerCombat : MonoBehaviour
     void Stab()
     {
         animator.SetTrigger("stab");
+        FindObjectOfType<AudioManager>().Play("Stab");
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(stabPoint.position, new Vector2(stabWidth,stabHeight), 0, enemyLayers);
         for (int i = 0; i < hitEnemies.Length; i++)
         {

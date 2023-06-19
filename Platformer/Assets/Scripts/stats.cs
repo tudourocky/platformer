@@ -22,6 +22,8 @@ public class stats : MonoBehaviour
     {
         Debug.Log("P1 takes damage");
         animator.SetTrigger("hurt");
+        // play hurt sound effect
+        FindObjectOfType<AudioManager>().Play("HurtSound");
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
@@ -35,9 +37,9 @@ public class stats : MonoBehaviour
         animator.SetBool("isDead", true);
         //GetComponent<Collider2D>().enabled = false;
         GetComponent<PlayerMovement>().enabled = false;
-
+        // play death sound effect
         FindObjectOfType<AudioManager>().Play("PlayerDeath");
-
+        FindObjectOfType<GameManager>().EndGame();
         this.enabled = false;
     }
 
