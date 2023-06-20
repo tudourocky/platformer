@@ -77,7 +77,11 @@ public class Player2Movement : MonoBehaviour {
         }
         if (Input.GetKeyDown(down))
         {
-            animator.SetTrigger("crouch");
+            animator.SetBool("crouching", true);
+        }
+        else if (Input.GetKeyUp(down))
+        {
+            animator.SetBool("crouching", false);
         }
         if (Input.GetKeyDown(up) && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
