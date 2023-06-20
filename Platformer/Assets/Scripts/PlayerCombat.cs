@@ -43,7 +43,7 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time >= nextAttackTime)
+        if(Time.time >= nextAttackTime && !animator.GetBool("crouching"))
         {
             if (Input.GetKeyDown(attack))
             {
