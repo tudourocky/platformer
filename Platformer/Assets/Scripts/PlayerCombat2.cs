@@ -106,6 +106,9 @@ public class PlayerCombat2 : MonoBehaviour
     }
     public async void attackBoost()
     {
+        Vector3 localPos = player2.transform.localPosition;
+        localPos.y += 2f;
+        player2.transform.localPosition = localPos;
         player2.transform.localScale *= 1.4f;
         attackDamage += 2;
         stabDamage += 2;
