@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour {
     void Update() {
         if(transform.position.y < -40)
         {
-            FindObjectOfType<GameManager>().EndGame();
+            FindObjectOfType<GameManager>().EndGameTwo();
         }
         if (isDashing)
         {

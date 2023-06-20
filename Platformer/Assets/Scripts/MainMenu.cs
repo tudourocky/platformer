@@ -16,8 +16,13 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void RestartGame()
+    public void RestartGameFromPlayerOneWon()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public void RestartGameFromPlayerTwoWon()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 }

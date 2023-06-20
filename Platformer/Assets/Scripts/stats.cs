@@ -50,7 +50,7 @@ public class stats : MonoBehaviour
         GetComponent<PlayerMovement>().enabled = false;
         // play death sound effect
         FindObjectOfType<AudioManager>().Play("PlayerDeath");
-        FindObjectOfType<GameManager>().EndGame();
+        FindObjectOfType<GameManager>().EndGameTwo();
         this.enabled = false;
     }
 
