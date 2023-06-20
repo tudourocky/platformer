@@ -24,6 +24,9 @@ public class PlayerCombat2 : MonoBehaviour
     public float stabHeight = 0.5f;
     public float stabWidth = 5f;
 
+    float nextHealTime = 0f;
+    public int healAmount = 2;
+
     public Animator animator;
     public LayerMask enemyLayers;
 
@@ -51,7 +54,12 @@ public class PlayerCombat2 : MonoBehaviour
                 nextAttackTime = Time.time + 1f / stabRate;
             }
         }
-        if(animator.GetBool("isDead"))
+        if (Time.time >= nextHealTime)
+        {
+            player2.GetComponent<stats2>().heal(healAmount);
+            nextHealTime = Time.time + 1f;
+        }
+        if (animator.GetBool("isDead"))
         {
             dead();
         }
@@ -78,7 +86,10 @@ public class PlayerCombat2 : MonoBehaviour
         {
             hitEnemies[i].GetComponent<stats>().takeDamage(stabDamage);
         }
-
+    }
+    public void updateHealTime()
+    {
+        nextHealTime = Time.time + 5f;
     }
     void OnDrawGizmosSelected()
     {
@@ -95,9 +106,9 @@ public class PlayerCombat2 : MonoBehaviour
     }
     public async void attackBoost()
     {
-        player2.transform.localScale *= 1.2f;
-        attackDamage += 10;
-        stabDamage += 10;
+        player2.transform.localScale *= 1.4f;
+        attackDamage += 2;
+        stabDamage += 2;
         await Task.Delay((int)(5000));
         player2.transform.localScale = player2baseScale;
         if (!player2.GetComponent<Player2Movement>().getIsFacingRight())
@@ -106,7 +117,7 @@ public class PlayerCombat2 : MonoBehaviour
             localScale.x *= -1f;
             player2.transform.localScale = localScale;
         }
-        attackDamage = baseAttackDamage;
-        stabDamage = baseStabDamage;
+        //attackDamage = baseAttackDamage;
+        //stabDamage = baseStabDamage;
     }
 }

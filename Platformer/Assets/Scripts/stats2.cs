@@ -22,10 +22,21 @@ public class stats2 : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("HurtSound");
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        GetComponent<PlayerCombat2>().updateHealTime();
         if(currentHealth <= 0)
         {
             die();
         }
+    }
+    public void heal(int healAmount)
+    {
+        if (currentHealth == maxHealth) return;
+        currentHealth += healAmount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthBar.SetHealth(currentHealth);
     }
     void die()
     {

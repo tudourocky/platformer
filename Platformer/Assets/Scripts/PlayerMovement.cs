@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour {
     public float speed;
     public float baseSpeed;
     public float speed2;
-    private float jumpPower = 28f;
+    private float jumpPower = 25f;
     private bool isFacingRight = true;
 
     //Dash
@@ -49,16 +49,23 @@ public class PlayerMovement : MonoBehaviour {
     }
     // Update is called once per frame
     void Update() {
+        if(transform.position.y < -40)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
         if (isDashing)
         {
             return;
         }
         
-        if (GetComponent<stats>().healthBar.getCurrHealth() != currHealth)
+        if (GetComponent<stats>().healthBar.getCurrHealth() < currHealth)
         {
             currHealth = GetComponent<stats>().healthBar.getCurrHealth();
             player2posX = player2Movement.transform.position.x;
             StartCoroutine(Dash2());
+        } else
+        {
+            currHealth = GetComponent<stats>().healthBar.getCurrHealth();
         }
         
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -143,11 +150,11 @@ public class PlayerMovement : MonoBehaviour {
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
     }
-    public async void speedBoost()
+    public void speedBoost()
     {
-        speed *= 2;
-        await Task.Delay((int)(5000));
-        speed = baseSpeed;
+        speed += 3f;
+        //await Task.Delay((int)(5000));
+        //speed = baseSpeed;
     }
     /*
     private void Attack() {
