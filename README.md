@@ -1,15 +1,15 @@
-# Science Acacdemy 2D fighter
+# Science Academy 2D fighter
 ![intro](https://github.com/tudourocky/platformer/assets/67175442/bab213d4-1192-4b43-bab3-df69dd47bca8)
 ### Purpose
 The purpose of this game was to demonstrate our team's ability to create a project from start to finish and our learning during our time in Science Academy. 
 
-### Idiation Stage
+### Ideation Stage
 
-We wanted to create a game that is interactive in a presentation setting, therefore we wanted to create a game that envolves multiplayer. We also lack the ability to create 3D Assets, so we decided that we will stick with a 2D game and use pixel art so that we can empathize on getting a game running. With all these things combined, our team ended up choosing to make something similar to the classic game Street Fighters. 
+We wanted to create a game that is interactive in a presentation setting, therefore we wanted to create a game that involves multiplayer. We also lack the ability to create 3D Assets, so we decided that we will stick with a 2D game and use pixel art so that we can emphasize on getting a game running. With all these things combined, our team ended up choosing to make something similar to the classic game Street Fighters. 
 
 ### Use of Technology
 
-- We decided on using Unity 2D due to the huge amount of tutorials that are avaliable online.
+- We decided on using Unity 2D due to the huge amount of tutorials that are avaliable online
 - We used Github to both collabrate and version control
 - We used Aseprite to create the pixel art
 - We used Bosca Ceoil to create BGM and FreeSound for SFX
