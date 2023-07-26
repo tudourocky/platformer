@@ -38,5 +38,3 @@ We wanted to create a game that is interactive in a presentation setting, theref
         - Swip
         - Hurt
         - Recieve Boost
-
-### Game Demo
