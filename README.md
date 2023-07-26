@@ -35,6 +35,6 @@ We wanted to create a game that is interactive in a presentation setting, theref
 - Music
     - BGM
     - SFX
-        - Swip
+        - Attack
         - Hurt
-        - Recieve Boost
+        - Receive Boost
