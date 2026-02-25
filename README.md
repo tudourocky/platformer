@@ -38,3 +38,6 @@ We wanted to create a game that is interactive in a presentation setting, theref
         - Attack
         - Hurt
         - Receive Boost
+### Play The Game
+- The Windows build is located within the Builds folder of the repository
+- Other builds can be done through cloning and building through Unity
