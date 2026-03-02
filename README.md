@@ -1,5 +1,9 @@
 # Science Academy 2D fighter
 ![intro](https://github.com/tudourocky/platformer/assets/67175442/bab213d4-1192-4b43-bab3-df69dd47bca8)
+
+### Demo
+https://github.com/user-attachments/assets/5d65d9c3-8cc2-40cb-8126-ca2c54c8f929
+
 ### Purpose
 The purpose of this game was to demonstrate our team's ability to create a project from start to finish and our learning during our time in Science Academy. 
 
